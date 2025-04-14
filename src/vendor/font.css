@@ -1,0 +1,15 @@
+@font-face {
+  font-family: "CabinetGrotesk";
+  src: url("./fonts/CabinetGrotesk.woff2") format("woff2"),
+    url("./cabinet-grotesk-webfont/CabinetGrotesk-Medium.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+header {
+  font-family: "CabinetGrotesk", sans-serif;
+}
+
+body {
+  font-family: "CabinetGrotesk", sans-serif;
+}
