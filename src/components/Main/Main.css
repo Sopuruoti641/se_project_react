@@ -1,8 +1,8 @@
-.cards__text {
+.main__description {
   margin: 20px 0 20px;
 }
 
-.cards__list {
+.main__items {
   display: flex;
   flex-wrap: wrap;
   margin: 0;

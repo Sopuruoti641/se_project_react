@@ -1,0 +1,8 @@
+.profile {
+  display: flex;
+}
+
+.profile__sidebar {
+  /* display: flex; */
+  /* flex-direction: row; */
+}

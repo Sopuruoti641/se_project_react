@@ -1,8 +1,9 @@
 .footer__description {
   padding: 101px 2px 26px;
   font-weight: 400;
+  margin: 0;
 }
 
 #footer-year {
-  margin-left: 1123px;
+  margin-left: 1115px;
 }

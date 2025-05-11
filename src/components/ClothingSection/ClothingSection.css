@@ -1,0 +1,27 @@
+.clothes__add {
+  display: flex;
+  gap: 33px;
+  margin-left: 200px;
+}
+
+.clothes__text {
+  margin-left: -40px;
+}
+
+.clothes__button {
+  width: 95px;
+  height: 25px;
+  margin-top: 13px;
+  color: #00000099;
+  background: transparent;
+  border: transparent;
+}
+
+.clothes__section-items {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 117px;
+  gap: 21px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
