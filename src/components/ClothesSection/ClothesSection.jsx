@@ -1,21 +1,24 @@
 import "./ClothesSection.css";
 import ItemCard from "../ItemCard/ItemCard";
-import { defaultClothingItems } from "../../utils/constants";
 
-function ClothesSection({ onCardClick }) {
-  return (
-    <div className="clothes__section">
-      <div className="clothes__add">
-        <p className="clothes__text">Your items</p>
-        <button className="clothes__button">+ Add new</button>
-      </div>
-      <ul className="clothes__section-items">
-        {defaultClothingItems.map((item) => (
-          <ItemCard key={item._id} item={item} onCardClick={onCardClick} />
-        ))}
-      </ul>
+const ClothesSection = ({ onCardClick, onAddItemClick, clothingItems }) => (
+  <div className="clothes__section">
+    <div className="clothes__add">
+      <p className="clothes__text">Your items</p>
+      <button
+        onClick={onAddItemClick}
+        type="button"
+        className="clothes__button"
+      >
+        + Add item
+      </button>
     </div>
-  );
-}
+    <ul className="clothes__section-items">
+      {clothingItems.map((item) => (
+        <ItemCard key={item._id} item={item} onCardClick={onCardClick} />
+      ))}
+    </ul>
+  </div>
+);
 
 export default ClothesSection;

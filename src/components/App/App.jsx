@@ -13,6 +13,7 @@ import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit
 import { defaultClothingItems } from "../../utils/constants";
 import Profile from "../Profile/Profile";
 import { getItems, addItems, deleteItems } from "../../utils/Api";
+import DeleteModalForm from "../DeleteModalForm/DeleteModalForm";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -25,6 +26,7 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+  const [itemToDelete, setItemToDelete] = useState("");
 
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
@@ -43,7 +45,7 @@ function App() {
     setActiveModal("");
   };
 
-  const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
+  const handleAddItemModalSubmit = ({ name, weather, imageUrl }) => {
     addItems({ name, weather, imageUrl })
       .then((newItem) => {
         setClothingItems([newItem, ...clothingItems]);
@@ -52,10 +54,19 @@ function App() {
       .catch(console.error);
   };
 
-  const handleDeleteItem = (itemId) => {
-    deleteItems(itemId)
+  const handleOpenDeleteModal = (card) => {
+    setItemToDelete(card);
+    setActiveModal("confirm-delete");
+  };
+
+  const handleConfirmDelete = () => {
+    deleteItems(itemToDelete._id)
       .then(() => {
-        setClothingItems(clothingItems.filter((item) => item._id !== itemId));
+        setClothingItems((items) =>
+          items.filter((item) => item._id !== itemToDelete._id)
+        );
+        setItemToDelete(null);
+        closeActiveModal();
       })
       .catch(console.error);
   };
@@ -102,6 +113,7 @@ function App() {
                 <Profile
                   onCardClick={handleCardClick}
                   clothingItems={clothingItems}
+                  handleAddClick={handleAddClick}
                 />
               }
             />
@@ -118,6 +130,12 @@ function App() {
           activeModal={activeModal}
           card={selectedCard}
           onClose={closeActiveModal}
+          handleDeleteClick={handleOpenDeleteModal}
+        />
+        <DeleteModalForm
+          isOpen={activeModal === "confirm-delete"}
+          onClose={closeActiveModal}
+          onSubmit={handleConfirmDelete}
         />
       </div>
     </CurrentTemperatureUnitContext.Provider>
@@ -125,4 +143,3 @@ function App() {
 }
 
 export default App;
-// name, link: imageUrl, weather

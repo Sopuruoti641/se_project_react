@@ -3,6 +3,10 @@
   gap: 10px;
 }
 
+.sidebar__avatar {
+  width: 56px;
+}
+
 .sidebar__username {
   width: 134px;
 }

@@ -29,16 +29,7 @@
   background: transparent url(../../assets/close.svg) 50% no-repeat;
   height: 20px;
   border: transparent;
-}
-
-#modal-icon {
-  position: absolute;
-  top: 20px;
-  right: 28px;
-  width: 20px;
-  background: transparent url(../../assets/close-2.svg) 50% no-repeat;
-  height: 20px;
-  border: transparent;
+  cursor: pointer;
 }
 
 .modal__content {
@@ -104,4 +95,5 @@
 .modal__submit:hover {
   background-color: #00000099;
   transition: ease 0.2s;
+  cursor: pointer;
 }

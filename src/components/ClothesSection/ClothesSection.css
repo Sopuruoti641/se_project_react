@@ -1,6 +1,6 @@
 .clothes__add {
   display: flex;
-  gap: 33px;
+  gap: 20px;
   margin-left: 200px;
 }
 
@@ -20,7 +20,7 @@
 .clothes__section-items {
   display: flex;
   flex-wrap: wrap;
-  margin-left: 117px;
+  margin-left: 101px;
   gap: 21px;
   margin-top: 0;
   margin-bottom: 0;

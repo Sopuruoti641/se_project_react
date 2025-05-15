@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import "./Header.css";
 import logo from "../../assets/Logo.svg";
-import avatarDefault from "../../assets/default-avatar.svg";
+import Avatar from "../../assets/avatar.svg";
 
 function Header({ handleAddClick, weatherData }) {
   const currentDate = new Date().toLocaleString("default", {
@@ -10,7 +10,7 @@ function Header({ handleAddClick, weatherData }) {
     day: "numeric",
   });
 
-  const avatar = avatarDefault;
+  const avatar = Avatar;
 
   return (
     <header className="header">
