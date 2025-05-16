@@ -23,6 +23,7 @@
   right: 260px;
   width: 150px;
   font-size: large;
+  cursor: pointer;
 }
 
 .modal__cancel {
@@ -31,4 +32,5 @@
   bottom: 60px;
   background: white;
   border: transparent;
+  cursor: pointer;
 }

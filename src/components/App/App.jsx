@@ -59,7 +59,9 @@ function App() {
     setActiveModal("confirm-delete");
   };
 
-  const handleConfirmDelete = () => {
+  const handleConfirmDelete = (e) => {
+    e.preventDefault();
+
     deleteItems(itemToDelete._id)
       .then(() => {
         setClothingItems((items) =>
@@ -83,11 +85,19 @@ function App() {
   useEffect(() => {
     getItems()
       .then((data) => {
-        setClothingItems(data);
+        const sorted = [...data].sort((a, b) => b._id - a._id); // newest first
+        setClothingItems(sorted);
       })
-
       .catch(console.error);
   }, []);
+  // useEffect(() => {
+  //   getItems()
+  //     .then((data) => {
+  //       setClothingItems(data);
+  //     })
+
+  //     .catch(console.error);
+  // }, []);
 
   return (
     <CurrentTemperatureUnitContext.Provider

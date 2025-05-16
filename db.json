@@ -7,10 +7,16 @@
       "_id": 26
     },
     {
-      "name": "ss",
+      "name": "ffff",
       "weather": "warm",
       "link": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Coat.png?etag=298717ed89d5e40b1954a1831ae0bdd4",
       "_id": 27
+    },
+    {
+      "name": "ss",
+      "weather": "warm",
+      "link": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Sweatshirt.png?etag=008a9674757bea2e0bdb31242e364be0",
+      "_id": 28
     }
   ]
 }

@@ -26,4 +26,4 @@ function deleteItems(itemId) {
   });
 }
 
-export { getItems, addItems, deleteItems };
+export { getItems, addItems, deleteItems, fetchJson };
