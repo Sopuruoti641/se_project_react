@@ -38,3 +38,26 @@
   margin: 40px 0;
   color: black;
 }
+
+.header__signin-link {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  margin: 40px 0;
+  color: black;
+  position: relative;
+  left: 441px;
+  text-decoration: none;
+}
+
+.header__login-link {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+  margin: 40px 0;
+  color: black;
+  position: relative;
+  left: 1120px;
+  text-decoration: none;
+}

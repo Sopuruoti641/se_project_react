@@ -13,8 +13,6 @@ import Footer from "../Footer/Footer";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import ItemModal from "../ItemModal/ItemModal";
 import DeleteModalForm from "../DeleteModalForm/DeleteModalForm";
-import RegisterModal from "../RegisterModal/RegisterModal";
-import LoginModal from "../LoginModal/LoginModal";
 import Profile from "../Profile/Profile";
 
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
@@ -35,7 +33,7 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [itemToDelete, setItemToDelete] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [currentUser, setCurrentUser] = useState({});
 
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
@@ -217,7 +215,7 @@ function App() {
           onSubmit={handleConfirmDelete}
         />
 
-        <LoginModal
+        {/* <LoginModal
           isOpen={isLoginModalOpen}
           onClose={closeActiveModal}
           onLogin={handleLogin}
@@ -227,7 +225,7 @@ function App() {
           isOpen={isRegisterModalOpen}
           onClose={closeActiveModal}
           onRegister={handleRegister}
-        />
+        /> */}
       </div>
     </CurrentTemperatureUnitContext.Provider>
   );
