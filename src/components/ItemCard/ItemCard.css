@@ -1,26 +1,58 @@
-.card {
-  width: 323px;
+.clothing__cards {
   position: relative;
+  right: 39px;
   display: flex;
   justify-content: center;
+  max-height: 328px;
+  max-width: 325px;
 }
 
-.card__name {
+.clothing-card__name {
+  /* position: absolute;
+  z-index: 1;
+  background-color: #fff;
+  margin-top: 15px;
+  margin-bottom: 287px;
+  margin-left: 125px;
+  margin-right: 125px;
+  border-radius: 4px;
+  padding-top: 2px;
+  padding-right: 12px;
+  padding-bottom: 2px;
+  padding-left: 12px;
+  opacity: 60%; */
+
+  position: absolute;
+  z-index: 1;
+  background-color: #fff;
+  margin: 15px 125px 287px;
+
+  border-radius: 4px;
+  padding: 2px 12px;
+  opacity: 60%;
+}
+
+.clothing-card__image {
+  border-radius: 24px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  height: 326px;
+  width: 323px;
+}
+
+.clothing-card__like-button {
+  background-image: url("/se_project_react/src/assets/unliked.svg");
+  background-repeat: no-repeat;
+  background-color: transparent;
+  width: 25px;
+  height: 21px;
+  border: none;
   position: absolute;
   top: 15px;
-  margin: 0;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 20px;
-  color: #00000099;
-  background-color: #fff;
-  padding: 3px 13px;
-  border-radius: 4px;
+  right: 76px;
+  cursor: pointer;
 }
 
-.card__image {
-  width: 323px;
-  height: 326px;
-  border-radius: 7%;
-  cursor: pointer;
+.clothing-card__like-button_active {
+  background-image: url("../../assets/liked.svg");
+  background-color: transparent;
 }

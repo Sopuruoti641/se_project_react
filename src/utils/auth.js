@@ -1,32 +1,56 @@
-const BASE_URL = "http://localhost:3001"; // update if deployed
+import { checkResponse } from "./Api";
 
-export const register = ({ name, avatar, email, password }) => {
-  return fetch(`${BASE_URL}/signup`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ name, avatar, email, password }),
-  }).then((res) =>
-    res.ok ? res.json() : Promise.reject(`Register failed: ${res.status}`)
-  );
-};
+export const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://api.majorpain.net.technoWizard.com"
+    : "http://localhost:3001";
 
-export const login = ({ email, password }) => {
-  return fetch(`${BASE_URL}/signin`, {
+export function getToken() {
+  return localStorage.getItem("jwt");
+}
+
+export function login({ email, password }) {
+  return fetch(`${baseUrl}/signin`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password }),
-  }).then((res) =>
-    res.ok ? res.json() : Promise.reject(`Login failed: ${res.status}`)
-  );
-};
+  })
+    .catch(console.error)
+    .then(checkResponse);
+}
 
-export const checkToken = (token) => {
-  return fetch(`${BASE_URL}/users/me`, {
+export function signUp({ email, avatar, name, password }) {
+  console.log(email, avatar, name, password);
+  return fetch(`${baseUrl}/signup`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, avatar, name, password }),
+  })
+    .catch(console.error)
+    .then(checkResponse);
+}
+
+export function updateUser({ name, avatar }) {
+  return fetch(`${baseUrl}/users/me`, {
+    method: "PATCH",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
+      authorization: `Bearer ${getToken()}`,
     },
-  }).then((res) =>
-    res.ok ? res.json() : Promise.reject(`Token invalid: ${res.status}`)
-  );
-};
+    body: JSON.stringify({ avatar, name }),
+  })
+    .catch(console.error)
+    .then(checkResponse);
+}
+
+export function getCurrentUser() {
+  return fetch(`${baseUrl}/users/me`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${getToken()}`,
+    },
+  })
+    .catch(console.error)
+    .then(checkResponse);
+}

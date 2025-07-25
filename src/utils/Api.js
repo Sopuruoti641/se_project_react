@@ -1,29 +1,56 @@
-const baseUrl = "http://localhost:3001";
+import { getToken, baseUrl } from "./auth";
 
-function fetchJson(url, options) {
-  return fetch(url, options).then((res) =>
-    res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
-  );
+export function checkResponse(res) {
+  return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
 }
 
-function getItems() {
-  return fetchJson(`${baseUrl}/items`);
+export function getItems() {
+  return fetch(`${baseUrl}/items`, {
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${getToken()}`,
+    },
+  }).then(checkResponse);
 }
 
-function addItems({ name, weather, imageUrl }) {
-  return fetchJson(`${baseUrl}/items`, {
+export function addCardLike(itemId) {
+  return fetch(`${baseUrl}/items/${itemId}/likes`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${getToken()}`,
+    },
+  }).then(checkResponse);
+}
+
+export function removeCardLike(itemId) {
+  return fetch(`${baseUrl}/items/${itemId}/likes`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${getToken()}`,
+    },
+  }).then(checkResponse);
+}
+
+export function postItem({ name, weather, imageUrl }) {
+  console.log(name, weather, imageUrl);
+  return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
-      "Content-type": "application/json",
+      "Content-Type": "application/json",
+      authorization: `Bearer ${getToken()}`,
     },
-    body: JSON.stringify({ name, weather, link: imageUrl }),
-  });
+    body: JSON.stringify({ name, imageUrl, weather }),
+  }).then(checkResponse);
 }
 
-function deleteItems(itemId) {
-  return fetchJson(`${baseUrl}/items/${itemId}`, {
+export function removeItem(_id) {
+  return fetch(`${baseUrl}/items/${_id}`, {
     method: "DELETE",
-  });
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${getToken()}`,
+    },
+  }).then(checkResponse);
 }
-
-export { getItems, addItems, deleteItems, fetchJson };

@@ -9,6 +9,7 @@
   justify-content: center;
   align-items: center;
   visibility: hidden;
+  z-index: 3;
 }
 
 .modal_opened {
@@ -17,83 +18,115 @@
 
 .modal__title {
   margin: 0;
-  margin-bottom: 20px;
-  margin-top: 10px;
+  font-size: 16px;
+  margin-bottom: 24px;
+}
+
+.modal__label {
+  font-size: 16px;
+  margin: 14px 0px 0px;
+}
+
+.modal__label_type_radio {
+  margin-bottom: 8px;
+  display: flex;
 }
 
 .modal__close {
+  background-color: rgba(0, 0, 0, 0.3);
+  background: transparent url(../../assets/Union.png) 50% no-repeat;
   position: absolute;
-  top: 20px;
-  right: 28px;
-  width: 20px;
-  background: transparent url(../../assets/close.svg) 50% no-repeat;
+  top: 24px;
+  right: 24px;
   height: 20px;
-  border: transparent;
+  width: 20px;
+  border: none;
+  margin-bottom: auto;
+  margin-left: auto;
+  z-index: 4;
   cursor: pointer;
 }
 
 .modal__content {
   background-color: #fff;
   position: relative;
-  padding: 28px 28px 28px;
+  padding: 28px 28px 36px;
   max-width: 496px;
-  height: 436px;
-  box-sizing: border-box;
   width: 100%;
-  border-radius: 20px;
-}
-
-.modal__content_type_image {
-  background-color: #fff;
-  position: relative;
-  padding: 28px 28px 28px;
-  max-width: 496px;
-  height: 610px;
   box-sizing: border-box;
-  width: 100%;
-  border-radius: 20px;
+  border-radius: 16px;
 }
 
 .modal__form {
   display: flex;
   flex-direction: column;
-  width: 100%;
 }
 
 .modal__input {
   display: block;
+  margin-top: 8px;
+  border: none;
+  text-decoration-thickness: 1px;
+  border-bottom: 1px solid #000;
+  text-underline-offset: 4px;
   width: 100%;
-  border: transparent;
-  border-bottom: 1px solid black;
-  margin-top: 10px;
 }
 
 .modal__radio-buttons {
-  flex-direction: column;
-  gap: 1px;
   border: none;
   padding: 0;
   display: flex;
-  margin: 20px 0 0;
+  flex-direction: column;
+  color: rgba(0, 0, 0, 0.5);
+  line-height: 20px;
 }
 
-.modal__submit {
-  position: absolute;
-  bottom: 37px;
+.modal__radio-input {
+  margin-right: 8px;
+}
+.modal__legend {
+  margin-bottom: 12px;
+  color: #000;
+}
+
+.modal_submit-btns {
+  display: flex;
+}
+
+.modal__submit-btn {
+  justify-content: center;
+  align-items: center;
   width: 124px;
   height: 36px;
-  border-radius: 4px;
-  padding-top: 8px;
-  padding-right: 16px;
-  padding-bottom: 8px;
-  padding-left: 16px;
-  background-color: #000000;
+  margin-top: 42px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: none;
+  border-radius: 8px;
   color: #fff;
-  border: transparent;
+  cursor: pointer;
 }
 
-.modal__submit:hover {
-  background-color: #00000099;
-  transition: ease 0.2s;
+.modal__submit-btn2 {
+  align-items: center;
+  height: 36px;
+  margin-top: 42px;
+  margin-left: 2px;
+  background-color: #fff;
+  border: none;
+  border-radius: 8px;
   cursor: pointer;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.modal__submit-btn:hover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 124px;
+  height: 36px;
+  margin-top: 42px;
+  background-color: #000;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
 }

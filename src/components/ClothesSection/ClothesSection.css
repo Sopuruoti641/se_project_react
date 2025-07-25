@@ -1,28 +1,24 @@
-.clothes__add {
+.clothes__section {
+  width: 1016px;
+}
+
+.clothes-section__header {
+  display: flex;
+  margin-left: 40px;
+}
+
+.clothes-section__button {
+  border: none;
+  background: transparent;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.clothes-section__list {
   display: flex;
   gap: 20px;
-  margin-left: 200px;
-}
-
-.clothes__text {
-  margin-left: -40px;
-}
-
-.clothes__button {
-  width: 95px;
-  height: 25px;
-  margin-top: 13px;
-  color: #00000099;
-  background: transparent;
-  border: transparent;
-  cursor: pointer;
-}
-
-.clothes__section-items {
-  display: flex;
   flex-wrap: wrap;
-  margin-left: 101px;
-  gap: 21px;
-  margin-top: 0;
-  margin-bottom: 0;
+  flex-direction: row;
+  padding: 0;
+  position: relative;
+  left: 78px;
 }

@@ -1,12 +1,37 @@
 .sidebar {
   display: flex;
-  gap: 10px;
+  flex-direction: column;
+}
+.sidebar__userinfo {
+  display: flex;
 }
 
 .sidebar__avatar {
-  width: 56px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
 }
 
 .sidebar__username {
-  width: 134px;
+  max-height: 25px;
+  /* width: 100px */
+  margin-left: 16px;
+}
+
+.sidebar__edit-btn {
+  border: none;
+  margin-right: auto;
+  margin-top: 24px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.sidebar__logout-btn {
+  border: none;
+  margin-right: auto;
+  margin-top: 8px;
+  background: transparent;
+  cursor: pointer;
 }

@@ -1,1 +1,57 @@
+.modal__caption {
+  font-size: 20px;
+  margin-bottom: 12px;
+  margin-left: 32px;
+}
 
+.modal__weather {
+  position: relative;
+  bottom: 40px;
+  left: 32px;
+}
+
+.modal__image {
+  width: 498px;
+  height: 498px;
+  object-fit: contain;
+  position: relative;
+  border-radius: 16px 16px 0px 0px;
+}
+
+.modal__close-btn {
+  height: 20px;
+  width: 20px;
+  background: url("../../assets/Union.png") 50% no-repeat;
+  background-color: transparent;
+  top: 24px;
+  right: 24px;
+  border: none;
+  padding: 0px;
+  margin-bottom: auto;
+  margin-left: auto;
+  position: absolute;
+  z-index: 2;
+}
+.modal__delete-btn {
+  background: transparent;
+  color: crimson;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  position: relative;
+  top: -34px;
+  left: 375px;
+}
+
+.modal__content_type_image {
+  max-width: 498px;
+  max-height: 610px;
+  height: 100%;
+  width: 100%;
+  padding: 0px;
+}
+
+.modal__footer {
+  position: relative;
+  right: 33px;
+}

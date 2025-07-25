@@ -1,63 +1,91 @@
-.header {
+/* .header {
   display: flex;
   align-items: center;
-  gap: 22px;
+  padding: 32px 0 28px;
+} */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px 0 28px;
 }
 
-.header__date-and-location {
-  margin: 0 0 -11px;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 24px;
+.header__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  position: relative;
+}
+.header__container {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  gap: 24px;
 }
 
-.header__add-clothes-btn {
+.header__logo {
+  margin-right: 24px;
+  position: relative;
+  top: 5px;
+}
+
+.header__date-and-lo {
   margin: 0;
-  border: transparent;
-  background: transparent;
+  font-size: larger;
+  margin-right: auto;
+  margin-top: 10px;
+}
+
+.header__sign-in {
+  position: relative;
+  border: none;
   font-weight: 700;
-  font-size: 20px;
   line-height: 24px;
+  background-color: transparent;
   cursor: pointer;
+}
+
+.header__log-in {
+  position: relative;
+  border: none;
+  font-weight: 700;
+  line-height: 24px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.header__add-clothes {
+  margin: 0 0 0 0;
+  position: relative;
+  border: none;
+  font-weight: 700;
+  line-height: 24px;
+  background-color: transparent;
+  cursor: pointer;
+  right: 10px;
 }
 
 .header__link {
   text-decoration: none;
+  color: black;
 }
 
 .header__user-container {
   display: flex;
+  flex-direction: row;
+  align-items: center;
   gap: 12px;
 }
 
-.header__username {
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 100%;
-  letter-spacing: 0%;
-  margin: 40px 0;
-  color: black;
+.header__user-name {
+  margin: 0;
+  position: relative;
 }
 
-.header__signin-link {
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 100%;
-  letter-spacing: 0%;
-  margin: 40px 0;
-  color: black;
-  position: relative;
-  left: 441px;
-  text-decoration: none;
-}
-
-.header__login-link {
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 100%;
-  margin: 40px 0;
-  color: black;
-  position: relative;
-  left: 1120px;
-  text-decoration: none;
+.header__toggle-wrapper {
+  margin-left: auto;
+  margin-right: 24px;
+  display: flex;
+  align-items: center;
 }

@@ -1,24 +1,49 @@
-import "./ClothesSection.css";
+import { CurrentUserContext } from "../../contexts/CurrentTemperatureUnitContext";
 import ItemCard from "../ItemCard/ItemCard";
+import "./ClothesSection.css";
+import { useContext } from "react";
 
-const ClothesSection = ({ onCardClick, onAddItemClick, clothingItems }) => (
-  <div className="clothes__section">
-    <div className="clothes__add">
-      <p className="clothes__text">Your items</p>
-      <button
-        onClick={onAddItemClick}
-        type="button"
-        className="clothes__button"
-      >
-        + Add item
-      </button>
+function ClothesSection({
+  onCardClick,
+  clothingItems,
+  handleAddClick,
+  onCardLike,
+  isLoggedIn,
+}) {
+  const currentUser = useContext(CurrentUserContext);
+
+  return (
+    <div className="clothes__section">
+      <div className="clothes-section__header">
+        <p>Your Items</p>
+
+        <button
+          className="clothes-section__button"
+          onClick={handleAddClick}
+          type="button"
+        >
+          + Add New{" "}
+        </button>
+      </div>
+      <ul className="clothes-section__list">
+        {clothingItems
+          .filter((item) => {
+            return item.owner === currentUser._id;
+          })
+          .map((item) => {
+            return (
+              <ItemCard
+                key={item._id}
+                item={item}
+                onCardClick={onCardClick}
+                onCardLike={onCardLike}
+                isLoggedIn={isLoggedIn}
+              />
+            );
+          })}
+      </ul>
     </div>
-    <ul className="clothes__section-items">
-      {clothingItems.map((item) => (
-        <ItemCard key={item._id} item={item} onCardClick={onCardClick} />
-      ))}
-    </ul>
-  </div>
-);
+  );
+}
 
 export default ClothesSection;
