@@ -19,6 +19,7 @@
 
 .modal__radio-input {
   margin-right: 8px;
+  cursor: pointer;
 }
 
 .modal__label_type_radio {
