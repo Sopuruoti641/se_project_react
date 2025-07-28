@@ -1,8 +1,10 @@
 import { CurrentUserContext } from "../../contexts/CurrentTemperatureUnitContext";
 import React, { useContext } from "react";
 import "./ItemCard.css";
+import likedIcon from "../../assets/liked.svg";
+import unlikedIcon from "../../assets/unliked.svg";
 
-function ItemCard({ item, onCardClick, isLoggedIn }) {
+function ItemCard({ item, onCardClick, isLoggedIn, onCardLike }) {
   const currentUser = useContext(CurrentUserContext);
   const handleCardClick = () => {
     onCardClick(item);
@@ -27,7 +29,12 @@ function ItemCard({ item, onCardClick, isLoggedIn }) {
           className={`clothing-card__like-button ${
             isLiked ? "clothing-card__like-button_active" : ""
           }`}
-        ></button>
+        >
+          <img
+            src={isLiked ? likedIcon : unlikedIcon}
+            alt={isLiked ? "Liked" : "Not liked"}
+          />
+        </button>
       )}
     </div>
   );
