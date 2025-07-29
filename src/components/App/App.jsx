@@ -87,6 +87,19 @@ function App() {
   };
 
   useEffect(() => {
+    if (isLoggedIn) {
+      getItems()
+        .then((data) => {
+          setClothingItems(data.reverse());
+        })
+        .catch(console.error);
+    } else {
+      // Optionally clear items when logged out
+      setClothingItems([]);
+    }
+  }, [isLoggedIn]);
+
+  useEffect(() => {
     getWeather(coordinates, APIkey)
       .then((data) => {
         setWeatherData(filterWeatherData(data));
