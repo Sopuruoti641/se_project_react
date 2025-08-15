@@ -1,39 +1,27 @@
-import "../ModalWithForm/ModalWithForm.css";
+import "./ModalWithForm.css";
 
 function ModalWithForm({
   children,
   buttonText,
-  secondButtonText,
   title,
+  isOpen,
   onClose,
   onSubmit,
-  onClick,
 }) {
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    onSubmit();
-  };
-
   return (
-    <div className={`modal modal_opened`}>
+    <div className={`modal ${isOpen ? "modal_opened" : ""}`}>
       <div className="modal__content">
         <h2 className="modal__title">{title}</h2>
-        <button onClick={onClose} type="button" className="modal__close" />
-
-        <form className="modal__form" onSubmit={handleFormSubmit}>
+        <button
+          onClick={onClose}
+          type="button"
+          className="modal__close"
+        ></button>
+        <form onSubmit={onSubmit} className="modal__form">
           {children}
-          <div className="modal_submit-btns">
-            <button type="submit" className="modal__submit-btn">
-              {buttonText}
-            </button>
-            <button
-              onClick={onClick}
-              type="button"
-              className="modal__submit-btn2"
-            >
-              {secondButtonText}
-            </button>
-          </div>
+          <button type="submit" className="modal__submit">
+            {buttonText}
+          </button>
         </form>
       </div>
     </div>

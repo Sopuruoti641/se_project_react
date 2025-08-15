@@ -8,8 +8,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
   visibility: hidden;
-  z-index: 3;
 }
 
 .modal_opened {
@@ -17,33 +19,41 @@
 }
 
 .modal__title {
-  margin: 0;
+  margin: 0 0 24px;
   font-size: 16px;
-  margin-bottom: 24px;
+  line-height: 20px;
 }
 
 .modal__label {
-  font-size: 16px;
-  margin: 14px 0px 0px;
+  margin-bottom: 24px;
 }
 
 .modal__label_type_radio {
   margin-bottom: 8px;
-  display: flex;
+}
+
+.modal__label_type_radio:last-child {
+  margin-bottom: 32px;
+}
+
+.modal__radio-input {
+  accent-color: #000000;
+}
+
+.modal__legend {
+  margin-bottom: 12px;
 }
 
 .modal__close {
-  background-color: rgba(0, 0, 0, 0.3);
-  background: transparent url(../../assets/Union.png) 50% no-repeat;
   position: absolute;
-  top: 24px;
-  right: 24px;
+  top: 20px;
+  right: 28px;
+  background: transparent url(../../assets/Union.png) 40% no-repeat;
   height: 20px;
   width: 20px;
+  background-size: cover;
   border: none;
-  margin-bottom: auto;
-  margin-left: auto;
-  z-index: 4;
+  background-color: transparent;
   cursor: pointer;
 }
 
@@ -52,9 +62,9 @@
   position: relative;
   padding: 28px 28px 36px;
   max-width: 496px;
-  width: 100%;
   box-sizing: border-box;
-  border-radius: 16px;
+  width: 100%;
+  border-radius: 20px;
 }
 
 .modal__form {
@@ -64,69 +74,61 @@
 
 .modal__input {
   display: block;
-  margin-top: 8px;
   border: none;
-  text-decoration-thickness: 1px;
   border-bottom: 1px solid #000;
-  text-underline-offset: 4px;
-  width: 100%;
+  width: 440px;
 }
 
-.modal__radio-buttons {
-  border: none;
+.modal__radio-btns {
   padding: 0;
+  border: none;
   display: flex;
   flex-direction: column;
-  color: rgba(0, 0, 0, 0.5);
+}
+
+.modal__submit {
+  width: 127px;
+  height: 36px;
+  border-radius: 7px;
+  border: none;
+  background-color: #0000004d;
+  color: #ffffff;
+  padding: 0;
+  cursor: pointer;
+}
+
+.modal__button-secondary {
+  font-weight: 700;
+  font-size: 16px;
   line-height: 20px;
-}
-
-.modal__radio-input {
-  margin-right: 8px;
-}
-.modal__legend {
-  margin-bottom: 12px;
-  color: #000;
-}
-
-.modal_submit-btns {
-  display: flex;
-}
-
-.modal__submit-btn {
-  justify-content: center;
-  align-items: center;
-  width: 124px;
-  height: 36px;
-  margin-top: 42px;
-  background-color: rgba(0, 0, 0, 0.3);
-  border: none;
-  border-radius: 8px;
-  color: #fff;
-  cursor: pointer;
-}
-
-.modal__submit-btn2 {
-  align-items: center;
-  height: 36px;
-  margin-top: 42px;
-  margin-left: 2px;
-  background-color: #fff;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
+  letter-spacing: 0%;
   color: rgba(0, 0, 0, 0.5);
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  bottom: 44px;
+  right: 255px;
+  padding: 0;
+  cursor: pointer;
 }
 
-.modal__submit-btn:hover {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 124px;
-  height: 36px;
-  margin-top: 42px;
-  background-color: #000;
-  border: none;
-  border-radius: 8px;
-  color: #fff;
+@media screen and (max-width: 627px) {
+  .modal__content {
+    max-width: 375px;
+    padding: 32px 16px;
+  }
+  .modal__close {
+    background-image: url(../../assets/close-btn-mobile.svg);
+    right: 20.79px;
+  }
+  .modal__input {
+    width: 343px;
+    padding: 8px 0 4px;
+  }
+  .modal__submit {
+    width: 343px;
+  }
+  .modal__label_type_radio:last-child {
+    margin-bottom: 30px;
+  }
 }

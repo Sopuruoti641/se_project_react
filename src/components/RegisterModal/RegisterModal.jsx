@@ -1,96 +1,100 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import "../ModalWithForm/ModalWithForm.css";
+import { useForm } from "../../Hooks/useForm";
 
-function RegisterModal({ onClose, onRegister, handleLogin }) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
-  const [avatar, setAvatar] = useState("");
+export default function RegisterModal({
+  isOpen,
+  onClose,
+  handleRegistrationSubmit,
+  handleLoginLinkClick,
+}) {
+  const { values, handleChange, setValues } = useForm({
+    email: "",
+    password: "",
+    name: "",
+    avatar: "",
+  });
 
-  const handleEmail = (e) => {
-    setEmail(e.target.value);
-  };
-  const handlePassword = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const handleName = (e) => {
-    setName(e.target.value);
-  };
-
-  const handleChangeImageUrl = (e) => {
-    setAvatar(e.target.value);
+  const onRegister = (e) => {
+    e.preventDefault();
+    handleRegistrationSubmit(values);
   };
 
-  const onSubmit = () => {
-    return onRegister({
-      email: email,
-      password: password,
-      name: name,
-      avatar: avatar,
-    });
-  };
+  useEffect(() => {
+    if (isOpen) {
+      setValues({ email: "", password: "", name: "", avatar: "" });
+    }
+  }, [isOpen]);
 
   return (
     <ModalWithForm
-      buttonText="Register"
-      secondButtonText="or Login"
-      title="Register"
+      title="Sign up"
+      buttonText="Sign Up"
+      isOpen={isOpen}
       onClose={onClose}
-      onSubmit={onSubmit}
-      onClick={handleLogin}
+      onSubmit={onRegister}
     >
-      <label htmlFor="email" className="modal__label">
-        Email{" "}
+      <label className="modal__label">
+        Email*{" "}
         <input
           type="email"
           className="modal__input"
-          id="email"
-          placeholder="email"
-          onChange={handleEmail}
-          value={email}
-          autoComplete="email"
+          id="email-register"
+          name="email"
+          placeholder="Email"
+          required
+          onChange={handleChange}
+          value={values.email}
         />
       </label>
-      <label htmlFor="password" className="modal__label">
-        Password{" "}
+      <label className="modal__label">
+        Password*{" "}
         <input
           type="password"
           className="modal__input"
-          id="password"
-          placeholder="password"
-          value={password}
-          onChange={handlePassword}
-          autoComplete="password"
+          id="password-register"
+          name="password"
+          placeholder="Password"
+          required
+          onChange={handleChange}
+          value={values.password}
         />
       </label>
-      <label htmlFor="name" className="modal__label">
+      <label className="modal__label">
         Name{" "}
         <input
           type="text"
           className="modal__input"
           id="name"
           placeholder="Name"
-          onChange={handleName}
-          value={name}
-          autoComplete="username"
+          name="name"
+          required
+          minLength="1"
+          maxLength="30"
+          onChange={handleChange}
+          value={values.name}
         />
       </label>
-      <label htmlFor="AvatarUrl" className="modal__label">
-        Image{" "}
+      <label className="modal__label">
+        Avatar URL{" "}
         <input
           type="url"
           className="modal__input"
-          id="AvatarUrl"
+          id="avatarUrl"
+          name="avatar"
           placeholder="Avatar URL"
-          value={avatar}
-          onChange={handleChangeImageUrl}
-          autoComplete="url"
+          required
+          onChange={handleChange}
+          value={values.avatar}
         />
       </label>
+      <button
+        type="button"
+        className="modal__button-secondary"
+        onClick={handleLoginLinkClick}
+      >
+        or Log in
+      </button>
     </ModalWithForm>
   );
 }
-
-export default RegisterModal;

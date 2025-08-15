@@ -1,37 +1,63 @@
 .sidebar {
   display: flex;
   flex-direction: column;
-}
-.sidebar__userinfo {
-  display: flex;
+  align-items: flex-start;
 }
 
-.sidebar__avatar {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  flex-shrink: 0;
+.sidebar__info {
   display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.sidebar__avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 55%;
+  margin-right: 16px;
+}
+
+.sidebar__avatar-placeholder {
+  background-color: #000000;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 700;
 }
 
 .sidebar__username {
-  max-height: 25px;
-  /* width: 100px */
-  margin-left: 16px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24.8px;
+  margin: 0;
+  text-wrap: nowrap;
 }
 
-.sidebar__edit-btn {
+.sidebar__change_profile_btn {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0%;
   border: none;
-  margin-right: auto;
-  margin-top: 24px;
-  background: transparent;
+  padding: 0;
   cursor: pointer;
 }
 
-.sidebar__logout-btn {
+.sidebar__log_out_btn {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
   border: none;
-  margin-right: auto;
-  margin-top: 8px;
-  background: transparent;
+  padding: 0;
   cursor: pointer;
+  margin-top: 15px;
+}
+
+@media screen and (max-width: 627px) {
+  .sidebar {
+    border-bottom: 1px solid #0000004d;
+    padding: 20px 0;
+    align-items: start;
+  }
 }

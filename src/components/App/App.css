@@ -1,58 +1,17 @@
 .page {
   background-color: #f3f3f3;
 }
-
 .page__content {
   max-width: 1360px;
-  margin: auto;
-  padding: 0 20px;
-  min-height: 100vh;
+  margin: 0 auto;
+  padding: 0 40px;
+  font-weight: 700;
 }
 
-.modal__radio-buttons {
-  margin-top: 20px;
-}
-
-.modal__label {
-  margin-top: 20px;
-}
-
-.modal__radio-input {
-  margin-right: 8px;
-  cursor: pointer;
-}
-
-.modal__label_type_radio {
-  margin-top: 10px;
-  color: #00000080;
-}
-
-.modal__image {
-  margin: -28px -27px;
-  max-width: 495px;
-  height: 494px;
-  border-radius: 20px 20px 1px 1px;
-}
-
-.modal__caption {
-  margin-bottom: 0;
-  margin-top: 45px;
-  font-size: 20px;
-}
-
-.modal__weather {
-  font-size: 20px;
-}
-
-.modal__delete-btn {
-  background: #fff;
-  border: transparent;
-  height: 24px;
-  width: 109px;
-  font-size: larger;
-  position: absolute;
-  top: 517px;
-  right: 22px;
-  color: #ff4d00;
-  cursor: pointer;
+@media screen and (max-width: 627px) {
+  .page__content {
+    max-width: 343px;
+    padding: 0 16px;
+    margin: 0;
+  }
 }

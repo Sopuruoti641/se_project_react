@@ -1,57 +1,71 @@
-.modal__caption {
-  font-size: 20px;
-  margin-bottom: 12px;
-  margin-left: 32px;
-}
-
-.modal__weather {
-  position: relative;
-  bottom: 40px;
-  left: 32px;
-}
-
 .modal__image {
-  width: 498px;
+  width: 100%;
   height: 498px;
-  position: relative;
-  border-radius: 16px 16px 0px 0px;
-}
-
-.modal__close-btn {
-  height: 20px;
-  width: 20px;
-  background: url("../../assets/Union.png") 50% no-repeat;
-  background-color: transparent;
-  top: 24px;
-  right: 24px;
-  border: none;
-  padding: 0px;
-  margin-bottom: auto;
-  margin-left: auto;
-  position: absolute;
-  z-index: 2;
-  cursor: pointer;
-}
-.modal__delete-btn {
-  background: transparent;
-  color: crimson;
-  border: none;
-  font-size: 16px;
-  cursor: pointer;
-  position: relative;
-  top: -34px;
-  left: 375px;
+  border-top-left-radius: 19px;
+  border-top-right-radius: 19px;
 }
 
 .modal__content_type_image {
-  max-width: 498px;
-  max-height: 610px;
-  height: 100%;
+  padding: 0;
+  position: relative;
+  background-color: #fff;
+  position: relative;
+  max-width: 496px;
+  box-sizing: border-box;
   width: 100%;
-  padding: 0px;
+  border-radius: 20px;
 }
 
-.modal__footer {
+.modal__caption {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  padding: 20px 0 0 32px;
+  margin: 0;
+}
+
+.modal__weather {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  padding: 12px 0 32px 32px;
+  margin: 0;
+}
+
+.modal__close_preview {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background-image: url(../../assets/close-btn-white.svg);
+  height: 20px;
+  width: 20px;
+  background-size: cover;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.modal__item-delete-btn {
   position: relative;
-  right: 33px;
+  top: -91px;
+  left: 360px;
+  border: none;
+  background: none;
+  color: #ff4d00;
+  padding: 0;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 627px) {
+  .modal__caption {
+    padding: 20px 0 12px 20px;
+  }
+  .modal__weather {
+    padding: 20px 0 40px 20px;
+  }
+  .modal__close_preview {
+    background-image: url(../../assets/close-btn-mobile.svg);
+  }
 }

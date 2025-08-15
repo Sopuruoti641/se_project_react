@@ -1,40 +1,33 @@
-import "../ItemModal/ItemModal.css";
+import "./ItemModal.css";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 import { useContext } from "react";
-import { CurrentUserContext } from "../../contexts/CurrentTemperatureUnitContext";
 
-function ItemModal({ onClose, handleDeleteCard, selectedCard }) {
+function ItemModal({ isOpen, onClose, card, onDeleteClick }) {
   const currentUser = useContext(CurrentUserContext);
-
-  const isOwn = selectedCard.owner?._id === currentUser._id;
-
-  // const itemDeleteButtonClassName = `modal__delete-button ${
-  //   isOwn ? "" : "modal__delete-button_hidden"
-  // }`;
+  const isOwn = card.owner === currentUser._id;
 
   return (
-    <div className={`modal modal_opened`}>
-      <div className="modal__content modal__content_type_image">
+    <div className={`modal ${isOpen ? "modal_opened" : ""}`}>
+      <div className="modal__content_type_image">
         <button
           onClick={onClose}
           type="button"
-          className="modal__close-btn"
+          className="modal__close_preview"
         ></button>
-        <img
-          src={selectedCard.imageUrl}
-          alt={selectedCard.name}
-          className="modal__image"
-        />
+        <img src={card.imageUrl} alt={card.name} className="modal__image" />
         <div className="modal__footer">
-          <h2 className="modal__caption">{selectedCard.name}</h2>
-          <button
-            type="button"
-            className="modal__delete-btn"
-            onClick={() => handleDeleteCard(selectedCard)}
-          >
-            Delete Item
-          </button>
-          <p className="modal__weather">Weather: {selectedCard.weather}</p>
+          <h2 className="modal__caption">{card.name}</h2>
+          <p className="modal__weather">Weather: {card.weather}</p>
         </div>
+        {isOwn && (
+          <button
+            className="modal__delete-btn modal__item-delete-btn"
+            type="button"
+            onClick={() => onDeleteClick(card)}
+          >
+            Delete item
+          </button>
+        )}
       </div>
     </div>
   );

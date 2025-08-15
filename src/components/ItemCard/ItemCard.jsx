@@ -1,43 +1,39 @@
-import { CurrentUserContext } from "../../contexts/CurrentTemperatureUnitContext";
-import React, { useContext } from "react";
 import "./ItemCard.css";
-import likedIcon from "../../assets/liked.svg";
-import unlikedIcon from "../../assets/unliked.svg";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
+import { useContext } from "react";
 
 function ItemCard({ item, onCardClick, isLoggedIn, onCardLike }) {
   const currentUser = useContext(CurrentUserContext);
+
+  const isLiked = item.likes.some((id) => id === currentUser?._id);
+
   const handleCardClick = () => {
     onCardClick(item);
   };
 
-  const isLiked = item.likes.some((id) => id === currentUser._id);
+  const handleLike = () => {
+    onCardLike({ id: item._id, isLiked });
+  };
 
-  console.log(item);
   return (
-    <div className="clothing__cards">
-      <h2 className="clothing-card__name">{item.name}</h2>
+    <li className="item-card">
+      <div className="item-card__header">
+        <h2 className="item-card__title">{item.name}</h2>
+
+        {isLoggedIn && (
+          <button
+            className={`card__like-btn ${isLiked ? "liked" : ""}`}
+            onClick={handleLike}
+          ></button>
+        )}
+      </div>
       <img
         onClick={handleCardClick}
         src={item.imageUrl}
         alt={item.name}
-        className="clothing-card__image"
+        className="item-card__image"
       />
-      {isLoggedIn && (
-        <button
-          onClick={(e) => onCardLike({ id: item._id, isLiked })}
-          type="button"
-          className={`clothing-card__like-button ${
-            isLiked ? "clothing-card__like-button_active" : ""
-          }`}
-        >
-          <img
-            src={isLiked ? likedIcon : unlikedIcon}
-            alt={isLiked ? "Liked" : "Not liked"}
-          />
-        </button>
-      )}
-    </div>
+    </li>
   );
 }
-
 export default ItemCard;

@@ -1,75 +1,97 @@
+import { useState } from "react";
 import "./Header.css";
-import headlogo from "../../assets/Logo.svg";
+import logo from "../../assets/wtwr.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import { CurrentUserContext } from "../../contexts/CurrentTemperatureUnitContext";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function Header({
   handleAddClick,
-  handleRegister,
-  handleLogin,
   weatherData,
   isLoggedIn,
+  handleRegisterClick,
+  handleLoginClick,
 }) {
-  const currentUser = useContext(CurrentUserContext);
+  const [isMobileMenuOpened, setIsMobileMenuOpened] = useState(false);
 
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpened((prevState) => !prevState);
+  };
+
+  const handleAddClothesClick = () => {
+    handleAddClick();
+    setIsMobileMenuOpened(false);
+  };
+
+  const currentUser = useContext(CurrentUserContext);
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
   });
+
   return (
     <header className="header">
-      <div className="header__container">
-        <Link to="/">
-          <img src={headlogo} alt="Logo Image" className="header__logo" />
-        </Link>
-        <p className="header__date-and-lo">
-          {currentDate}, {weatherData.city}
-        </p>
-      </div>
-      <div className="header__toggle-wrapper">
+      <Link to="/">
+        <img className="header__logo" src={logo} alt="App Logo" />
+      </Link>
+
+      <p className="header__date-and-location">
+        {currentDate}, {weatherData.city}
+      </p>
+      <div
+        className={
+          isMobileMenuOpened ? "header__nav-mobile-opened" : "header__nav"
+        }
+      >
         <ToggleSwitch />
+
+        {isLoggedIn ? (
+          <>
+            <button
+              onClick={handleAddClothesClick}
+              type="button"
+              className="header__add-clothes-btn"
+            >
+              + Add Clothes
+            </button>
+            <Link to="/profile" className="header__profile_link">
+              <div className="header__user-container">
+                <p className="header__username">{currentUser?.name}</p>
+                <img
+                  src={currentUser?.avatar}
+                  alt={currentUser?.name}
+                  className="header__avatar"
+                />
+              </div>
+            </Link>
+          </>
+        ) : (
+          <>
+            <button
+              type="button"
+              className="header__signup"
+              onClick={handleRegisterClick}
+            >
+              Sign Up
+            </button>
+
+            <button
+              type="button"
+              className="header__login"
+              onClick={handleLoginClick}
+            >
+              Log In
+            </button>
+          </>
+        )}
       </div>
-      {!isLoggedIn && (
-        <>
-          <button
-            onClick={handleRegister}
-            type="button"
-            className="header__sign-in"
-          >
-            Sign Up
-          </button>
-          <button
-            onClick={handleLogin}
-            type="button"
-            className="header__log-in"
-          >
-            Log In
-          </button>
-        </>
-      )}
-      {isLoggedIn && (
-        <>
-          <button
-            onClick={handleAddClick}
-            type="button"
-            className="header__add-clothes"
-          >
-            + Add clothes
-          </button>
-          <Link to="/profile" className="header__link">
-            <div className="header__user-container">
-              <p className="header__user-name">{currentUser.name}</p>
-              <img
-                src={currentUser.avatar}
-                alt="User name"
-                className="header__avatar"
-              />
-            </div>
-          </Link>
-        </>
-      )}
+
+      <button
+        type="button"
+        className={isMobileMenuOpened ? "header__close" : "header__mobile_view"}
+        onClick={toggleMobileMenu}
+      ></button>
     </header>
   );
 }

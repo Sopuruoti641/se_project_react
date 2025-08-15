@@ -1,59 +1,63 @@
-.clothing__cards {
-  position: relative;
-  right: 39px;
+.item-card {
+  background-color: #e9e9e9;
   display: flex;
+  position: relative;
+  height: 328px;
+  width: 325px;
+  outline: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
   justify-content: center;
-  max-height: 328px;
-  max-width: 325px;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
 }
 
-.clothing-card__name {
-  /* position: absolute;
-  z-index: 1;
-  background-color: #fff;
-  margin-top: 15px;
-  margin-bottom: 287px;
-  margin-left: 125px;
-  margin-right: 125px;
-  border-radius: 4px;
-  padding-top: 2px;
-  padding-right: 12px;
-  padding-bottom: 2px;
-  padding-left: 12px;
-  opacity: 60%; */
-
-  position: absolute;
-  z-index: 1;
-  background-color: #fff;
-  margin: 15px 125px 287px;
-
-  border-radius: 4px;
-  padding: 2px 12px;
-  opacity: 60%;
-}
-
-.clothing-card__image {
-  cursor: pointer;
-  border-radius: 24px;
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  height: 326px;
-  width: 323px;
-}
-
-.clothing-card__like-button {
-  background-image: url("/se_project_react/src/assets/unliked.svg");
-  background-repeat: no-repeat;
-  background-color: transparent;
-  width: 25px;
-  height: 21px;
-  border: none;
+.item-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   position: absolute;
   top: 15px;
-  right: 76px;
-  cursor: pointer;
+  width: 100%;
 }
 
-/* .clothing-card__like-button_active {
-  background-image: url("../../assets/liked.svg");
+.item-card__title {
+  padding: 2px 12px;
+  border-radius: 4px;
+  background-color: #ffffff;
+  margin: 0;
+  color: #00000099;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.item-card__image {
+  cursor: pointer;
+  width: 100%;
+}
+
+.card__like-btn {
+  background-image: url(../../assets/like-btn.svg);
+  width: 18px;
+  height: 15px;
+  border: none;
   background-color: transparent;
-} */
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.card__like-btn.liked {
+  background-image: url(../../assets/liked-btn.svg);
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+@media screen and (max-width: 627px) {
+  .item-card {
+    max-width: 164px;
+    max-height: 164px;
+  }
+}

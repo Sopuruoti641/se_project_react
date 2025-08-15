@@ -1,25 +1,44 @@
-import avatar from "../../assets/avatar.svg";
-import "./SideBar.css";
-import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import { useContext } from "react";
-import { CurrentUserContext } from "../../contexts/CurrentTemperatureUnitContext";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
+import "./SideBar.css";
 
-function SideBar({ onEdit, onLogout }) {
+function SideBar({ handleEditProfileClick, handleLogout }) {
   const currentUser = useContext(CurrentUserContext);
-  return (
-    <div className="sidebar">
-      <div className="sidebar__userinfo">
+
+  const renderAvatar = () => {
+    if (currentUser?.avatar) {
+      return (
         <img
           className="sidebar__avatar"
           src={currentUser.avatar}
-          alt="User avatar"
+          alt={currentUser?.name}
         />
-        <p className="sidebar__username">{currentUser.name}</p>
+      );
+    } else {
+      const firstLetter = currentUser?.name
+        ? currentUser.name[0].toUpperCase()
+        : "?";
+      return (
+        <div className="sidebar__avatar sidebar__avatar-placeholder">
+          {firstLetter}
+        </div>
+      );
+    }
+  };
+
+  return (
+    <div className="sidebar">
+      <div className="sidebar__info">
+        {renderAvatar()}
+        <p className="sidebar__username">{currentUser?.name}</p>
       </div>
-      <button type="button" className="sidebar__edit-btn" onClick={onEdit}>
-        Edit Profile
+      <button
+        onClick={handleEditProfileClick}
+        className="sidebar__change_profile_btn"
+      >
+        Change profile data
       </button>
-      <button type="button" className="sidebar__logout-btn" onClick={onLogout}>
+      <button onClick={handleLogout} className="sidebar__log_out_btn">
         Log out
       </button>
     </div>

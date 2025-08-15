@@ -1,55 +1,76 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import "../ModalWithForm/ModalWithForm.css";
 
-function LoginModal({ onClose, onLogin, handleRegister }) {
+export default function LoginModal({
+  isOpen,
+  onClose,
+  handleLoginSubmit,
+  handleSignUpLinkClick,
+}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleEmail = (e) => {
+  const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
-  const handlePassword = (e) => {
+
+  const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
 
-  const onSubmit = () => {
-    return onLogin(email, password);
+  const onLogin = (e) => {
+    e.preventDefault();
+    handleLoginSubmit({ email, password });
+    setEmail("");
+    setPassword("");
   };
+
+  useEffect(() => {
+    if (isOpen) {
+      setEmail("");
+      setPassword("");
+    }
+  }, [isOpen]);
 
   return (
     <ModalWithForm
-      buttonText="Login"
-      secondButtonText="or Register"
-      title="Login"
+      title="Log in"
+      buttonText="Log in"
+      isOpen={isOpen}
       onClose={onClose}
-      onSubmit={onSubmit}
-      onClick={handleRegister}
+      onSubmit={onLogin}
     >
-      <label htmlFor="name" className="modal_label">
-        Name{""}
+      <label className="modal__label">
+        Email*{" "}
         <input
           type="email"
           className="modal__input"
-          id="name"
-          placeholder="email"
-          onChange={handleEmail}
+          id="email-login"
+          placeholder="Email"
+          required
+          onChange={handleEmailChange}
           value={email}
         />
       </label>
-      <label htmlFor="imageUrl" className="modal_label">
-        Password{""}
+      <label className="modal__label">
+        Password*{" "}
         <input
           type="password"
           className="modal__input"
-          id="imageUrl"
-          placeholder="password"
+          id="password-login"
+          placeholder="Password"
+          required
+          onChange={handlePasswordChange}
           value={password}
-          onChange={handlePassword}
         />
       </label>
+      <button
+        type="button"
+        className="modal__button-secondary"
+        onClick={handleSignUpLinkClick}
+      >
+        or Sign Up
+      </button>
     </ModalWithForm>
   );
 }
-
-export default LoginModal;

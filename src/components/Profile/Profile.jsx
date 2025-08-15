@@ -1,35 +1,31 @@
-import "./Profile.css";
-import SideBar from "../SideBar/SideBar";
 import ClothesSection from "../ClothesSection/ClothesSection";
+import SideBar from "../SideBar/SideBar";
+import "./Profile.css";
 
 function Profile({
   onCardClick,
   clothingItems,
-  addItem,
   handleAddClick,
-  onEdit,
-  closeActiveModal,
-  onLogout,
-  onCardLike,
   isLoggedIn,
+  handleEditProfileClick,
+  onCardLike,
+  handleLogout,
 }) {
   return (
     <div className="profile">
       <section className="profile__sidebar">
         <SideBar
-          onLogout={onLogout}
-          onEdit={onEdit}
-          onClose={closeActiveModal}
+          handleEditProfileClick={handleEditProfileClick}
+          handleLogout={handleLogout}
         />
       </section>
-      <section className="profile__clothes-section">
+      <section className="profile__clothing-items">
         <ClothesSection
-          onCardClick={onCardClick}
-          onSubmit={addItem}
-          clothingItems={clothingItems}
           handleAddClick={handleAddClick}
-          onCardLike={onCardLike}
+          onCardClick={onCardClick}
+          clothingItems={clothingItems}
           isLoggedIn={isLoggedIn}
+          onCardLike={onCardLike}
         />
       </section>
     </div>
