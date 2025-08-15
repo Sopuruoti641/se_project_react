@@ -113,6 +113,8 @@ const location = {
 const APIkey = "27c2ee53e2679c8230b5853ba5b4ddb9";
 
 const baseUrl =
-  process.env.NODE_ENV === "production" ? "" : "http://localhost:3001";
+  process.env.NODE_ENV === "production"
+    ? "https://api.wtwr-web.port0.org"
+    : "http://localhost:3001";
 
 export { location, APIkey, baseUrl };
